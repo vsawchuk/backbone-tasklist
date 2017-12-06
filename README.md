@@ -11,5 +11,5 @@ npm start
 
 ## Links
 
-- [More verbose description of this repo](https://github.com/Ada-Developers-Academy/textbook-curriculum/blob/master/11-Backbonejs/live-code-overview.md) from the curriculum
+- [More verbose description of this repo]() from the curriculum
 - [Ada backbone baseline scaffold](https://github.com/AdaGold/backbone-baseline) upon which this repo is based
