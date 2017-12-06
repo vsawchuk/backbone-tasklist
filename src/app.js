@@ -17,7 +17,12 @@ const renderList = function(taskList) {
   $taskList.empty();
 
   taskList.forEach((task) =>{
-    $taskList.append(taskTemplate(task.attributes));
+    const taskHtml = $(taskTemplate(task.attributes));
+    $taskList.append(taskHtml);
+
+    taskHtml.find('.delete').click({task: task}, (params) => {
+      taskList.remove(params.data.task);
+    });
   });
 }
 
@@ -43,7 +48,7 @@ const addNewTask = function(event) {
   event.preventDefault();
 
   const taskData ={};
-  ['task_name', 'assignee', 'is_complete'].forEach( (field) => {
+  ['task_name', 'assignee'].forEach( (field) => {
     const val = $(`input[name=${field}]`).val();
     if (val != '') {
       taskData[field] = val;
