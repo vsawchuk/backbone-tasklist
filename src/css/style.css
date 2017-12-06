@@ -1,3 +1,7 @@
 .status-messages {
   display: none;
 }
+
+.task.is-complete {
+  background-color: lightgreen;
+}

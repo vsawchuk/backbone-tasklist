@@ -3,6 +3,7 @@ import Backbone from 'backbone';
 const Task = Backbone.Model.extend({
   defaults: {
     assignee: "nobody",
+    is_complete: false,
   },
   initialize: function(attributes) {
   },

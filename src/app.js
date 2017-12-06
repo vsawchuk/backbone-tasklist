@@ -23,6 +23,11 @@ const renderList = function(taskList) {
     taskHtml.find('.delete').click({task: task}, (params) => {
       taskList.remove(params.data.task);
     });
+
+    taskHtml.on('click', '.toggle-complete', {task: task}, function(params) {
+      params.data.task.set('is_complete', !params.data.task.get('is_complete'));
+      $(this).closest('.task').toggleClass('is-complete')
+    });
   });
 }
 
