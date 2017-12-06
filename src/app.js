@@ -16,21 +16,19 @@ const renderList = function(taskList) {
   const $taskList = $('#todo-items');
   $taskList.empty();
 
-  for(let i = 0; i < taskList.length; i++) {
-    const task = taskList.models[i];
+  taskList.forEach((task) =>{
     $taskList.append(taskTemplate(task.attributes));
-  }
-
+  });
 }
 
 // helper method for updating the DOM with the status from a hash
 const updateStatusMessageFrom = (messageHash) => {
   $('#status-messages ul').empty();
-  for(let messageType in messageHash) {
-    messageHash[messageType].forEach((message) => {
-      $('#status-messages ul').append($(`<li>${messageType}:  ${message}</li>`));
+  _.each(messageHash, (messageType) => {
+    messageType.forEach((message) => {
+      $('#status-messages ul').append($(`<li>${message}</li>`));
     })
-  }
+  });
   $('#status-messages').show();
 }
 
@@ -72,6 +70,7 @@ const failedSaveNewTask = function(task) {
   updateStatusMessageWith(`Unable to save new task`);
   task.destroy();
 }
+
 
 $(document).ready( () => {
   taskTemplate = _.template($('#task-template').html());

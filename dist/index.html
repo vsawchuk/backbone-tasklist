@@ -6,34 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <header>
+  <header class="row">
     <h1>Backbone Task List</h1>
   </header>
   <main>
-    <section id="status-messages" class="columns small-12">
-      <ul>
+    <section class="row">
+      <div id="status-messages" class="callout primary status-messages">
+        <ul class="columns small-12">
 
-      </ul>
+        </ul>
+      </div>
     </section>
 
-    <section class="columns small-12">
+    <section class="row">
       <h2>Task List</h2>
       <ul id="todo-items">
 
       </ul>
     </section>
 
-    <section class="columns small-12">
-      <h2>Add a New Task</h2>
-      <form id="add-task-form">
-        <label for="task_name">Task Name</label>
-        <input type="text" name="task_name" />
+    <section class="row">
+      <div class="columns large-8 large-offset-2">
+        <h2>Add a New Task</h2>
+        <form id="add-task-form">
+          <label for="task_name">Task Name</label>
+          <input type="text" name="task_name" />
 
-        <label for="assignee">Assignee</label>
-        <input type="text" name="assignee" />
+          <label for="assignee">Assignee</label>
+          <input type="text" name="assignee" />
 
-        <input type="submit" class="button" value="Add" />
-      </form>
+          <input type="submit" class="button" value="Add" />
+        </form>
+      </div>
     </section>
 
   </main>
