@@ -21,7 +21,9 @@ const renderList = function(taskList) {
     $taskList.append(taskHtml);
 
     taskHtml.find('.delete').click({task: task}, (params) => {
-      taskList.remove(params.data.task);
+      const task = params.data.task;
+      taskList.remove(task);
+      updateStatusMessageWith(`The task "${task.get('task_name')}" has been deleted`)
     });
 
     taskHtml.on('click', '.toggle-complete', {task: task}, function(params) {
@@ -33,10 +35,10 @@ const renderList = function(taskList) {
 
 // helper method for updating the DOM with the status from a hash
 const updateStatusMessageFrom = (messageHash) => {
-  $('#status-messages ul').empty();
+  $('#status-messages').empty();
   _.each(messageHash, (messageType) => {
     messageType.forEach((message) => {
-      $('#status-messages ul').append($(`<li>${message}</li>`));
+      $('#status-messages').append($(`<li>${message}</li>`));
     })
   });
   $('#status-messages').show();
@@ -44,8 +46,8 @@ const updateStatusMessageFrom = (messageHash) => {
 
 // helper method for updating the DOM with the status from a string
 const updateStatusMessageWith = (message) => {
-  $('#status-messages ul').empty();
-  $('#status-messages ul').append(`${message}</li>`);
+  $('#status-messages').empty();
+  $('#status-messages').append($(`<li>${message}</li>`));
   $('#status-messages').show();
 }
 
@@ -63,24 +65,11 @@ const addNewTask = function(event) {
 
   if (newTask.isValid()) {
     taskList.add(newTask);
-    newTask.save({}, {
-      success: successSaveNewTask,
-      error: failedSaveNewTask,
-    });
+    updateStatusMessageWith(`New task added: ${newTask.get('task_name')}`);
   } else {
     updateStatusMessageFrom(newTask.validationError);
   }
 }
-
-const successSaveNewTask = function(task) {
-  updateStatusMessageWith(`New task added: ${task.get('task_name')}`);
-}
-
-const failedSaveNewTask = function(task) {
-  updateStatusMessageWith(`Unable to save new task`);
-  task.destroy();
-}
-
 
 $(document).ready( () => {
   taskTemplate = _.template($('#task-template').html());
