@@ -15,6 +15,7 @@ const TaskView = Backbone.View.extend({
   events: {
     'click button.delete': 'deleteTask',
     'click button.toggle-complete': 'toggleComplete',
+    'click button.edit': 'editTask'
   },
   deleteTask: function(e) {
     this.model.destroy();
@@ -24,6 +25,9 @@ const TaskView = Backbone.View.extend({
     this.model.set('is_complete', !this.model.get('is_complete'));
     this.$el.closest('.task').toggleClass('is-complete');
   },
+  editTask: function(e) {
+    this.trigger('editMe', this);
+  }
 });
 
 export default TaskView;
