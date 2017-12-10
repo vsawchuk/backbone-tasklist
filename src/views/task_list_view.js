@@ -2,11 +2,11 @@ import Backbone from 'backbone';
 import TaskView from '../views/task_view';
 
 const TaskListView = Backbone.View.extend({
-  initialize: function(params) {
+  initialize(params) {
     this.template = params.template;
     this.listenTo(this.model, 'update', this.render);
   },
-  render: function() {
+  render() {
     // Clear the unordered list
     this.$('#todo-items').empty();
     // Iterate through the list rendering each Task
