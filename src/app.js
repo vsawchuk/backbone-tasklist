@@ -10,6 +10,7 @@ import Task from './models/task';
 import TaskList from './collections/task_list';
 
 import TaskView from './views/task_view'
+import TaskListView from './views/task_list_view';
 
 const taskList = new TaskList();
 
@@ -70,7 +71,13 @@ const addNewTask = function(event) {
 $(document).ready( () => {
   $('#add-task-form').submit(addNewTask);
 
-  taskList.on('update', renderList, taskList);
+  const taskListView = new TaskListView({
+    model: taskList,
+    template: _.template($('#task-template').html()),
+    el: 'main',
+  });
+
+  taskListView.render();
 
   taskList.add(new Task({task_name: "Put rendering logic in Backbone Views", assignee: "Me"}));
   taskList.add(new Task({task_name: "Put handling events in Backbone Views", assignee: "Me"}));
