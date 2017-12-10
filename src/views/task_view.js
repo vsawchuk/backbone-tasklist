@@ -11,6 +11,13 @@ const TaskView = Backbone.View.extend({
     this.$el.html(compiledTemplate);
     return this;
   },
+  events: {
+    'click button.delete': 'deleteTask'
+  },
+  deleteTask: function(e) {
+    this.model.destroy();
+    this.remove();
+  },
 });
 
 export default TaskView;
