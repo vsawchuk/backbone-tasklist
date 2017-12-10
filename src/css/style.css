@@ -1,7 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body, h1, h2, h3, p {
+ font-family: 'Nunito', sans-serif;
+}
+
+.headline {
+ display: inline-block;
+ border-bottom: lightgray dotted 4px;
+}
+
 .status-messages {
-  display: none;
+ display: none;
+ list-style-type: none;
+}
+
+.todo-items {
+ list-style-type: none;
+}
+
+.task {
+ margin-bottom: 20px;
+ padding: 30px;
+ border-radius: 5px;
 }
 
 .task.is-complete {
-  background-color: lightgreen;
+ background-color: lightgreen;
+}
+
+.footer-copy {
+ display: block;
+ text-align: center;
+}
+
+/*
+ Foundation Overrides
+*/
+
+.row {
+ margin: 50px auto;
 }

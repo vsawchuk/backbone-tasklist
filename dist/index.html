@@ -7,7 +7,9 @@
 </head>
 <body>
   <header class="row">
-    <h1>Backbone Task List</h1>
+    <div class="columns small-11 small-offset-1">
+      <h1 class="headline">Backbone Task List</h1>
+    </div>
   </header>
   <main>
     <section class="row">
@@ -17,14 +19,14 @@
     </section>
 
     <section class="row">
-      <h2>Task List</h2>
-      <ul id="todo-items">
+      <div class="columns small-12 large-6 large-offset-1">
+        <h2>Task List</h2>
+        <ul id="todo-items" class="todo-items">
 
-      </ul>
-    </section>
+        </ul>
+      </div>
 
-    <section class="row">
-      <div class="columns large-8 large-offset-2">
+      <div class="columns small-12 large-4 end">
         <h2>Add a New Task</h2>
         <form id="add-task-form">
           <label for="task_name">Task Name</label>
@@ -33,18 +35,20 @@
           <label for="assignee">Assignee</label>
           <input type="text" name="assignee" />
 
-          <input type="submit" class="button" value="Add" />
+          <input id="add-new-task" type="submit" class="button" value="Add" />
         </form>
       </div>
     </section>
 
   </main>
-  <footer>
-    &copy; 2017, Ada Developers Academy
+  <footer class="row">
+    <div class="columns small-12 medium-11 medium-offset-1">
+      <span class="footer-copy">&copy; 2017, Ada Developers Academy</span>
+    </div>
   </footer>
 
   <script id="task-template" type="text/template">
-    <li class="task columns small-6">
+    <li class="task">
       <h3>
         <%- task_name %>
       </h3>
@@ -53,6 +57,7 @@
       </p>
       <div>
         <button type="button" class="button primary toggle-complete">Toggle Completion</button>
+        <button type="button" class="button secondary edit">Edit</button>
         <button type="button" class="button alert delete">Delete Task</button>
       </div>
     </li>
