@@ -9,26 +9,9 @@ import './css/style.css';
 import Task from './models/task';
 import TaskList from './collections/task_list';
 
-import TaskView from './views/task_view'
 import TaskListView from './views/task_list_view';
 
 const taskList = new TaskList();
-
-const renderList = function(taskList) {
-  const $taskList = $('#todo-items');
-  $taskList.empty();
-
-  taskList.forEach((task) => {
-    const taskView = new TaskView({
-      model: task,
-      template: _.template($('#task-template').html()),
-      tagName: 'li',
-      className: 'task',
-    });
-
-    $taskList.append(taskView.render().$el);
-  });
-}
 
 // helper method for updating the DOM with the status from a hash
 const updateStatusMessageFrom = (messageHash) => {
