@@ -68,8 +68,6 @@ const addNewTask = function(event) {
 }
 
 $(document).ready( () => {
-  taskTemplate = _.template($('#task-template').html());
-
   $('#add-task-form').submit(addNewTask);
 
   taskList.on('update', renderList, taskList);
