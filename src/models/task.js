@@ -5,9 +5,9 @@ const Task = Backbone.Model.extend({
     assignee: "nobody",
     is_complete: false,
   },
-  initialize: function(attributes) {
+  initialize(attributes) {
   },
-  validate: function(attributes) {
+  validate(attributes) {
     const errors = {};
 
     if (!attributes.task_name) {
@@ -20,7 +20,7 @@ const Task = Backbone.Model.extend({
       return false;
     }
   },
-  toString: function() {
+  toString() {
     return `task_name: ${this.get('task_name')}, assignee: ${this.get('assignee')}`;
   },
 });
