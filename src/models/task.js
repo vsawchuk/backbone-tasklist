@@ -23,6 +23,9 @@ const Task = Backbone.Model.extend({
   toString: function() {
     return `task_name: ${this.get('task_name')}, assignee: ${this.get('assignee')}`;
   },
+  toggleComplete() {
+    this.set('is_complete', !this.get('is_complete'));
+  }
 });
 
 export default Task;
