@@ -18,6 +18,7 @@ const TaskListView = Backbone.View.extend({
         tagName: 'li',
         className: 'task',
       });
+      this.listenTo(taskView, 'editMe', this.editTask);
       list.append(taskView.render().$el);
     });
     return this;
@@ -37,10 +38,16 @@ const TaskListView = Backbone.View.extend({
     const newTask = new Task(taskData);
     if (newTask.isValid()) {
       this.model.add(newTask);
+      this.$('#add-task-form')[0].reset();
     this.updateStatusMessages(`New task added: ${newTask.get('task_name')}`);
     } else {
       this.updateStatusMessages(newTask.validationError);
     }
+  },
+  editTask(task) {
+    this.$('#add-task-form [name=task_name]').val(task.model.get('task_name'));
+    this.$('#add-task-form [name=assignee]').val(task.model.get('assignee'));
+    this.model.remove(task.model);
   },
   updateStatusMessages(input) {
     const statusMessagesEl = this.$('#status-messages');
